@@ -1,4 +1,6 @@
-FROM olegabu/fabric-tools-extended
+ARG DOCKER_REGISTRY
+ARG FABRIC_STARTER_VERSION
+FROM ${DOCKER_REGISTRY:-docker.io}/kilpio/fabric-tools-extended:${FABRIC_STARTER_VERSION:-latest}
 
 MAINTAINER olegabu
 
@@ -7,10 +9,11 @@ WORKDIR /usr/src/app
 
 ## install dependencies
 # COPY ["package.json", "package-lock.json"] .
+COPY gost-deps ./gost-deps
 COPY "package.json" .
 
 RUN apt-get update && apt-get install python make  \
-&& npm install && npm cache rm --force \
+&& npm install && npm rebuild && npm cache rm --force \
 && apt-get remove -y python make && apt-get purge
 
 
