@@ -8,7 +8,7 @@
     "dev": "./start-dev.sh",
     "start": "node app.js"
   },
-  "repository": "https://github.com/olegabu/fabric-starter-rest",
+  "repository": "https://github.com/kilpio/fabric-starter-rest",
   "author": "Oleg Abdrashitov <olegabu73@gmail.com>",
   "license": "ISC",
   "dependencies": {
